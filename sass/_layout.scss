@@ -1,0 +1,105 @@
+.container {
+    max-width: 120rem; // 1200px max-width and if the viewport is less than 1200px then we simply occupy the 100% available space. 
+    margin: 8rem auto; // centers the container inside the body
+    background-color: var(--color-grey-light-2);
+    box-shadow: var(--shadow-dark);
+    min-height: 50rem;
+
+    @media only screen and (max-width:$bp-largest) {
+        margin: 0;
+        // The width 120rem defined are no longer 1200px because the font size defined for large screen is only 8px making the container size 120 * 8 = 960px
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.header {
+    font-size: 1.4rem;
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--border-line);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-smallest) {
+        flex-wrap: wrap;
+        align-content: space-around;
+        height: 11rem;
+    }
+}
+
+// 👇🏽 flex container
+.content {
+    display: flex;
+
+    @media only screen and (max-width:$bp-medium) {
+        flex-direction: column;
+    }
+}
+
+.sidebar {
+    background-color: var(--color-grey-dark-1);
+    /*flex value order = flex-grow, flex-shrink, flex basis*/
+    flex: 0 0 18%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hotel-view {
+    background-color: #fff;
+    //TEST purpose
+    // background-color: orangered;
+    // height: 80rem;
+
+    //👇🏽 the element should grow as much as it can
+    flex: 1;
+}
+
+.detail {
+    font-size: 1.4rem;
+    display: flex;
+    padding: 4.5rem;
+    background-color: var(--color-grey-light-1);
+    border-bottom: var(--border-line);
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 3rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+    }
+}
+
+.description {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    // flex grow 0, flex shrink 0, flex basis 60%
+    flex: 0 0 60%;
+    margin-right: 4.5rem;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 2rem;
+        margin-right: 3rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+}
+
+.user-reviews {
+    // by setting flex 1 the item will occupy the remaining space beside it's siblings
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    //👇🏽 becuase the flex direction is (column) the align-items property is set to (stretch) by default to fix we must change it to (center)
+    align-items: center;
+}
